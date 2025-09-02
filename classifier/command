@@ -1,13 +1,6 @@
-python - <<'PY'
+../../venv/Scripts/python - <<'PY'
 from classifier import get_tweets_predictions, class_to_name
-
-samples = [
-    "I hate you",
-    "You are amazing!",
-    "What a stupid idea",
-    "Good morning everyone :)"
-]
-
+samples = ["I hate you","You are amazing!","What a stupid idea","Good morning everyone :)"]
 preds = get_tweets_predictions(samples)
 for s,p in zip(samples, preds):
     print(int(p), class_to_name(int(p)), "->", s)
