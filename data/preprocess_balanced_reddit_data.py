@@ -72,7 +72,7 @@ def main():
     processed_df = processed_df.rename(columns={'tweet_processed': 'tweet', 'expected_class': 'class'})
     
     # Save the preprocessed balanced Reddit data
-    output_file = 'balanced_reddit_comments_preprocessed.csv'
+    output_file = 'balanced_reddit_comments_with_sample_labels_preprocessed.csv'
     processed_df.to_csv(output_file, index=False)
     print(f"\nPreprocessed balanced Reddit data saved to {output_file}")
     print(f"Final comment count: {len(processed_df)}")
@@ -88,10 +88,7 @@ def main():
     for i, row in processed_df.head(3).iterrows():
         class_name = class_names.get(row['class'], f"Class {row['class']}")
         print(f"{i+1}. [{class_name}] {row['tweet'][:100]}...")
-    
-    # Note: Not combining with existing combined dataset as requested
-    print(f"\nSkipping combination with combined_dataset.csv as requested.")
-    
+        
     # Statistics
     print(f"\n=== Balanced Reddit Preprocessing Statistics ===")
     print(f"Average comment length: {processed_df['tweet'].str.len().mean():.1f} characters")
